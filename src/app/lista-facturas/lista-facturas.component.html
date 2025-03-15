@@ -1,0 +1,80 @@
+<div class="facturas-container">
+  <div *ngFor="let factura of facturas" class="factura">
+    <div class="factura-imagen">
+      <img 
+        [attr.src]="factura.imagen"
+        [alt]="factura.empresa"
+        [style]="estiloImagenesFacturas"
+      >
+    </div>
+
+    <div class="factura-info">
+      <h3 class="factura-info__titulo">Número Factura: <span class="factura-info__dato">{{factura.numeroFactura}}</span></h3>
+      <h3 class="factura-info__titulo">Fecha de emisión: <span class="factura-info__dato">{{factura.fechaEmision}}</span></h3>
+      <h2>Datos del Emisor:</h2>
+      <h3 class="factura-info__titulo">Empresa: <span class="factura-info__dato">{{factura.empresa}}</span></h3>
+      <h3 class="factura-info__titulo">NIF: <span class="factura-info__dato">{{factura.nif}}</span></h3>
+      <h3 class="factura-info__titulo">Dirección: <span class="factura-info__dato">{{factura.direccion}}</span></h3>
+      <h2>Datos del Receptor:</h2>
+      <h3 class="factura-info__titulo">Base Imponible: <span class="factura-info__dato">{{factura.baseImponible}}</span></h3>
+      <h3 class="factura-info__titulo">IVA: <span class="factura-info__dato">{{factura.iva}}</span></h3>
+      <h3 class="factura-info__titulo">Total: <span class="factura-info__dato">{{factura.total}}</span></h3>
+    </div>
+
+    <div class="factura-acciones">
+      <button (click)="editarFactura(factura)" class="factura-acciones__btn editar">EDITAR</button>
+      <button mat-button color="warn" (click)="eliminarFactura(factura)" class="factura-acciones__btn eliminar">ELIMINAR</button>
+    </div>
+  </div>
+</div>
+  
+  
+<div class="contenedor-añadir-factura">
+
+  <h2>AÑADIR FACTURA</h2>
+
+  <form (ngSubmit)="enviarFormulario()" #facturaForm="ngForm">
+    <div class="contenedores-secundarios">
+      <label for="numeroFactura">Número Factura</label>
+      <input id="numeroFactura" name="numeroFactura" [(ngModel)]="factura.numeroFactura" required />
+    </div>
+  
+    <div class="contenedores-secundarios">
+      <label for="fechaEmision">Fecha Emisión</label>
+      <input id="fechaEmision" name="fechaEmision" type="date" [(ngModel)]="factura.fechaEmision" required />
+    </div>
+  
+    <div class="contenedores-secundarios">
+      <label for="empresa">Empresa</label>
+      <input id="empresa" name="empresa" [(ngModel)]="factura.empresa" required />
+    </div>
+  
+    <div class="contenedores-secundarios">
+      <label for="nif">NIF</label>
+      <input id="nif" name="nif" [(ngModel)]="factura.nif" required />
+    </div>
+  
+    <div class="contenedores-secundarios">
+      <label for="direccion">Dirección</label>
+      <input id="direccion" name="direccion" [(ngModel)]="factura.direccion" required />
+    </div>
+  
+    <div class="contenedores-secundarios">
+      <label for="baseImponible">Base Imponible</label>
+      <input id="baseImponible" name="baseImponible" type="number" [(ngModel)]="factura.baseImponible" (ngModelChange)="calcularTotal()" required />
+    </div>
+
+    <div class="contenedores-secundarios">
+      <label for="iva">IVA (%)</label>
+      <input id="iva" name="iva" type="number" [(ngModel)]="factura.iva" (ngModelChange)="calcularTotal()" required />
+    </div>
+
+  
+    <div class="contenedores-secundarios">
+      <label for="total">Total</label>
+      <input id="total" name="total" type="number" [(ngModel)]="factura.total" readonly />
+    </div>
+  
+    <button class="boton-añadir-factura" type="submit" [disabled]="!facturaForm.form.valid">Enviar</button>
+  </form>
+</div>  

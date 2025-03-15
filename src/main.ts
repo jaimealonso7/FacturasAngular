@@ -1,6 +1,7 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
+import { appConfig } from './app/app.config';  // Importa la configuración de Firebase y otros proveedores
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+// Arranca la aplicación con la configuración definida en appConfig
+bootstrapApplication(AppComponent, appConfig).catch(err => console.error(err));
+

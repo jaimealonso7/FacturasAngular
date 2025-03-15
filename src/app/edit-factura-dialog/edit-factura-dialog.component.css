@@ -1,0 +1,65 @@
+
+label{
+  font-size: 16px;
+}
+
+.input-field {
+    width: 95%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .titulo{
+    background-color: aliceblue;
+    color: black;
+  }
+
+  .caja-edicion{
+    background-color: aliceblue;
+    color: black;
+  }
+
+  /* Estilos para los botones con clase .botones */
+  .botones {
+    background-color: aliceblue;
+    /*background-color: #90caf9;  Azul suave */
+    color: black; /* Texto negro */
+    padding: 12px 24px; /* Relleno interior */
+    border: 1px solid #64b5f6; /* Borde azul más claro */
+    font-size: 1rem; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita en el texto */
+    cursor: pointer; /* Cursor de mano al pasar por encima */
+    transition: all 0.3s ease; /* Transición suave */
+  }
+
+  
+
+
+  button {
+    margin: 3px;
+    width: 100px; /* Aumentado para mejor visibilidad */
+    height: 45px; /* Aumentado para mejor visibilidad */
+    background-color: #ffeb3b; /* Amarillo pastel */
+    color: black; /* Texto negro */
+    border: none;
+    border-radius: 8px; /* Bordes redondeados */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover {
+    background-color: #fdd835; /* Amarillo más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Efecto de zoom */
+  }
+
+  button[color="primary"] {
+    background-color: #1976d2; /* Azul para el botón "Guardar" */
+    color: white; /* Texto blanco */
+  }
+  
+  button[color="primary"]:hover {
+    background-color: #1565c0; /* Azul más oscuro al pasar el mouse */
+  }

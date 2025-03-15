@@ -1,0 +1,21 @@
+<h2 mat-dialog-title class="titulo">Editar Factura</h2>
+<div mat-dialog-content class="caja-edicion">
+  <label>Número Factura:</label>
+  <input [(ngModel)]="factura.numeroFactura" class="input-field" />
+
+  <label>Fecha de Emisión:</label>
+  <input [(ngModel)]="factura.fechaEmision" type="date" class="input-field" />
+
+  <label>Empresa:</label>
+  <input [(ngModel)]="factura.empresa" class="input-field" />
+
+  <label>NIF Emisor:</label>
+  <input [(ngModel)]="factura.nifEmisor" class="input-field" />
+
+  <label>Dirección Emisor:</label>
+  <input [(ngModel)]="factura.direccionEmisor" class="input-field" />
+</div>
+<div mat-dialog-actions class="botones">
+  <button mat-button color="primary" (click)="saveChanges()">Guardar</button>
+  <button mat-button (click)="cancel()">Cancelar</button>
+</div>

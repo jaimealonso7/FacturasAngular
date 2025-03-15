@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /facturas/{document} {
+      // Permitir solo lectura de facturas sin autenticación
+      allow read: if true;
+      // Puedes permitir también escritura si lo necesitas
+      allow write: if true;
+    }
+  }
+}

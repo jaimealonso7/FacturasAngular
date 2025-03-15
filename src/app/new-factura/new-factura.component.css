@@ -1,0 +1,45 @@
+/* General styles for the dialog content */
+mat-dialog-content {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: rgb(234, 0, 0);  /* White background for the dialog */
+    border-radius: 8px;
+    max-width: 500px;  /* Limit the width */
+    margin: 0 auto; /* Center the dialog */
+    display: block;
+}
+
+/* General styles for form fields */
+mat-form-field {
+    background-color: rgb(255, 254, 254);  /* Ensures the background of the form field is opaque */
+    width: 100%; /* Full width */
+    margin-bottom: 15px;
+    
+}
+
+/* Label styling */
+mat-form-field .mat-label {
+    color: rgb(234, 13, 13) !important;  /* Make label color black */
+    font-weight: bold;
+}
+
+/* Styling for the input fields */
+mat-form-field input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #000000;
+}
+
+/* Styling for label when the input field is focused */
+mat-form-field.mat-form-field-appearance-outline .mat-label {
+    transform: translateY(-20px);
+    font-size: 14px;
+    color: rgb(255, 255, 255) !important; /* Ensure label stays black even when focused */
+}
+
+/* Optional: Make sure the input fields have good contrast */
+mat-form-field input:focus {
+    border-color: #4CAF50;  /* Green border when focused */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);  /* Light green glow effect */
+}

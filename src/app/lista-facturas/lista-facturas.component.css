@@ -1,0 +1,105 @@
+.facturas-container {
+    display: flex; /* Mostrar elementos horizontalmente */
+    flex-wrap: wrap; /* Si no caben en una línea, se moverán a la siguiente */
+    gap: 20px; /* Espacio entre las facturas */
+    justify-content: flex-start; /* Alinea las facturas a la izquierda */
+}
+
+
+.factura {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 12px;
+    border: 1px solid black;
+    padding: 18px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Estilo para la imagen */
+.factura-imagen img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Estilo para la información de la factura */
+.factura-info__titulo {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.factura-info__dato {
+    font-weight: bold;
+    color: #007bff; /* Azul */
+}
+
+/* Botones de acciones */
+.factura-acciones {
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.factura-acciones__btn {
+    margin-left: 10px;
+    border: none;
+    height: 50px;
+    width: 100px;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+}
+
+.factura-acciones .editar {
+    background: yellow;
+}
+
+.factura-acciones .editar:hover {
+    background: orange;
+    color: white;
+}
+
+.factura-acciones .eliminar {
+    background: greenyellow;
+}
+
+.factura-acciones .eliminar:hover {
+    background: green;
+    color: white;
+}
+
+/* Estilo extra para los botones */
+.border-btn {
+    border: 1px solid black;
+}
+
+.contenedor-añadir-factura{
+    margin: 15px;
+    margin-bottom: 200px;
+    border: 1px solid black;
+    width: 400px;
+    height: 440px;
+}
+
+h2{
+    text-align: center;
+}
+
+.contenedores-secundarios{
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    margin: 15px;
+}
+
+label{
+    margin: 3px;
+}
+
+.boton-añadir-factura{
+    justify-content: center;
+}
