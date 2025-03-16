@@ -1,22 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { EditFacturaDialogComponent } from '../edit-factura-dialog/edit-factura-dialog.component'; // Import the dialog component
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
-import { NewFacturaComponent } from '../new-factura/new-factura.component';
 import { FormsModule } from '@angular/forms';
 import Factura from '../interfaces/facturas.interfaz';
 import { FacturasService } from '../services/facturas.service';
 
 @Component({
-  selector: 'app-factura',
+  selector: 'app-lista-facturas',
   standalone: true,
-  imports: [CommonModule, MatDialogModule, ConfirmDialogComponent, FormsModule], // Import MatDialogModule
+  imports: [CommonModule, MatToolbarModule, MatButtonModule, MatDialogModule, FormsModule], // Import MatDialogModule
   templateUrl: './lista-facturas.component.html',
   styleUrls: ['./lista-facturas.component.css']
 })
 
-export class FacturaComponent implements OnInit {
+export class ListaFacturaComponent implements OnInit {
 
   estiloImagenesFacturas: any;
 
@@ -48,7 +49,7 @@ export class FacturaComponent implements OnInit {
     }
   }
 
-  constructor(
+  constructor( private renderer: Renderer2,
     private dialog: MatDialog, private facturasService: FacturasService
   ) {
     this.facturas = [{
@@ -66,6 +67,8 @@ export class FacturaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.renderer.setStyle(document.body, 'background-color', '#ffffff'); // Fondo blanco
+    this.renderer.setStyle(document.body, 'color', '#000'); // Texto negro
     this.facturasService.getFacturas().subscribe(facturas => {
       this.facturas = facturas.map(factura => ({
         ...factura,
@@ -77,6 +80,8 @@ export class FacturaComponent implements OnInit {
       console.error('Error al obtener las facturas:', error);
     });
   }
+
+  logOut(): void {}
 
   eliminarFactura(factura: Factura) {
     if (!factura || !factura.id) {

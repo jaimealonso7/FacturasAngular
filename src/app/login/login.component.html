@@ -1,4 +1,4 @@
-<h1>BIENVENIDOS A LA PAGINA FACTURAS</h1>
+<!--<h1>BIENVENIDOS A LA PAGINA FACTURAS</h1>
 
 <div class="contenedor-principal">
     <form class="form">
@@ -17,6 +17,53 @@
         
     </form>
 </div>
-<button [routerLink]="'/lista-facturas'">Ir a Listado de Facturas</button>
+<button [routerLink]="'/lista-facturas'">Ir a Listado de Facturas</button>-->
+
+<div class="form">
+    <div class="form__container">
+        <h1>Inicia Sesión</h1>
+        <form [formGroup]="form" (ngSubmit)="logIn()">
+            <div>
+              <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" />
+                <mat-error *ngIf="form.get('email')?.hasError('required')">
+                  El email es obligatorio
+                </mat-error>
+                <mat-error *ngIf="form.get('email')?.hasError('email')">
+                  Ingresa un email válido
+                </mat-error>
+              </mat-form-field>
+            </div>
+          
+            <div>
+              <mat-form-field>
+                <mat-label>Introduce tu contraseña</mat-label>
+                <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" />
+                <button
+                  mat-icon-button
+                  matSuffix
+                  (click)="hide = !hide"
+                  [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide"
+                >
+                  <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+                </button>
+                <mat-error *ngIf="form.get('password')?.hasError('required')">
+                  La contraseña es obligatoria
+                </mat-error>
+              </mat-form-field>
+            </div>
+          
+            <div>
+              <button mat-flat-button color="accent" type="submit" [disabled]="form.invalid">Iniciar Sesión</button>
+            </div>
+          </form>
+        <hr />
+        <span class="small-text log-in-redirect">
+            No tienes una cuenta aún? <a routerLink="/sign-up">Registrate</a>
+        </span>
+    </div>
+</div>
 
 

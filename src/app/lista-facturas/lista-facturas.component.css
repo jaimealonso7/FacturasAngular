@@ -1,10 +1,20 @@
 
+:host ::ng-deep body {
+    background: #ffffff !important; /* Cambia el fondo del body a blanco */
+    color: #000; /* Cambia el color del texto si es necesario */
+  }
+
 body {
     min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
     display: flex;
     flex-direction: column;
     padding-bottom: 50px; /* Esto agregará espacio al fondo de la página */
-  }
+}
+
+.mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+}
 
 .facturas-container {
     display: flex; /* Mostrar elementos horizontalmente */

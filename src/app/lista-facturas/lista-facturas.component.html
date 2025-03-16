@@ -1,3 +1,10 @@
+<mat-toolbar color="accent">
+  <span>Listado de facturas</span>
+
+  <button mat-flat-button (click)="logOut()">Log out</button>
+
+</mat-toolbar>
+
 <div class="facturas-container">
   <div *ngFor="let factura of facturas" class="factura">
     <div class="factura-imagen">
