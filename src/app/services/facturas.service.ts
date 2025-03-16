@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { collection, Firestore, addDoc, collectionData, doc, deleteDoc } from '@angular/fire/firestore';
+import { collection, Firestore, addDoc, collectionData, doc, deleteDoc, updateDoc } from '@angular/fire/firestore';
 import Factura from '../interfaces/facturas.interfaz';
 import { Observable } from 'rxjs';
 
@@ -22,9 +22,18 @@ export class FacturasService {
     return collectionData(facturaRef, { idField: 'id'}) as Observable<Factura[]>;
   }
 
-  delete(factura: Factura) {
-    const facturaDocRef = doc(this.firestore, `facturas/${factura.id}`);
+  deleteFactura(id: string) {
+    if (!id) {
+      return Promise.reject('Error: ID vacío o inválido.');
+    }
+    const facturaDocRef = doc(this.firestore, `facturas/${id}`);
     return deleteDoc(facturaDocRef);
+  }
+
+  // Actualizar una factura
+  updateFactura(factura: any) {
+    const facturaDocRef = doc(this.firestore, `facturas/${factura.id}`); // Usamos doc() para obtener la referencia del documento
+    return updateDoc(facturaDocRef, factura); // Actualizamos el documento con updateDoc
   }
 
 }

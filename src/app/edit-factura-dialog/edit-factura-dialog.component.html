@@ -9,11 +9,20 @@
   <label>Empresa:</label>
   <input [(ngModel)]="factura.empresa" class="input-field" />
 
-  <label>NIF Emisor:</label>
-  <input [(ngModel)]="factura.nifEmisor" class="input-field" />
+  <label>NIF:</label>
+  <input [(ngModel)]="factura.nif" class="input-field" />
 
-  <label>Dirección Emisor:</label>
-  <input [(ngModel)]="factura.direccionEmisor" class="input-field" />
+  <label>Dirección:</label>
+  <input [(ngModel)]="factura.direccion" class="input-field" />
+
+  <label>Base Imponible:</label>
+  <input [(ngModel)]="factura.baseImponible" class="input-field" (ngModelChange)="calcularTotal()" />
+
+  <label>IVA:</label>
+  <input [(ngModel)]="factura.iva" class="input-field" (ngModelChange)="calcularTotal()" />
+
+  <label>Total:</label>
+  <input [(ngModel)]="factura.total" class="input-field" [readOnly]="true" />
 </div>
 <div mat-dialog-actions class="botones">
   <button mat-button color="primary" (click)="saveChanges()">Guardar</button>

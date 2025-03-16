@@ -1,7 +1,15 @@
+
+body {
+    min-height: 100vh; /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px; /* Esto agregará espacio al fondo de la página */
+  }
+
 .facturas-container {
     display: flex; /* Mostrar elementos horizontalmente */
     flex-wrap: wrap; /* Si no caben en una línea, se moverán a la siguiente */
-    gap: 20px; /* Espacio entre las facturas */
+    gap: 15px; /* Espacio entre las facturas */
     justify-content: flex-start; /* Alinea las facturas a la izquierda */
 }
 
@@ -77,29 +85,101 @@
     border: 1px solid black;
 }
 
-.contenedor-añadir-factura{
-    margin: 15px;
-    margin-bottom: 200px;
+/*
+
+.facturas-container {
+    display: flex; /* Mostrar elementos horizontalmente 
+    flex-wrap: wrap; /* Si no caben en una línea, se moverán a la siguiente 
+    gap: 20px; /* Espacio entre las facturas 
+    justify-content: flex-start;  Alinea las facturas a la izquierda
+}
+*/
+
+/*.factura {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 12px;
     border: 1px solid black;
+    padding: 18px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    align-items: center;
+    margin: 20px;
+}*/
+
+.contenedor-añadir-factura{
+    padding: 20px;
+    margin: 40px;
+    margin-bottom: 50px;
+    border: 1px solid #ccc; 
     width: 400px;
-    height: 440px;
+    height: auto;
+    border-radius: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f9f9f9; /* Fondo más suave */
 }
 
 h2{
     text-align: center;
 }
 
-.contenedores-secundarios{
-    text-align: center;
-    justify-content: center;
+.contenedores-secundarios {
     display: flex;
-    margin: 15px;
+    flex-direction: column; /* Asegura que el label esté arriba del input */
+    align-items: center; /* Centra el contenido horizontalmente */
+    margin: 5px;
 }
 
-label{
-    margin: 3px;
+label {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 7px; /* Añadimos espacio entre el label y el input */
+    color: #333; /* Color más oscuro para mayor contraste */
+    text-align: center; /* Asegura que el label esté centrado */
 }
 
-.boton-añadir-factura{
-    justify-content: center;
+input {
+    padding: 10px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 50%; /* Cambié el ancho a 90% para hacerlo más pequeño */
+    max-width: 350px; /* Aseguramos que no crezca más allá de este valor */
+    box-sizing: border-box; /* Asegura que el padding no cambie el tamaño total del input */
+    margin-bottom: 15px; /* Espacio entre los inputs */
+    transition: border-color 0.3s ease-in-out;
+}
+
+input:focus {
+    outline: none;
+    border-color: #00ff1e; /* Cambio de color del borde al enfocarse */
+    box-shadow: 0 0 5px rgba(0, 255, 30, 0.5); /* Añadimos sombra para dar énfasis */
+}
+
+input[readonly] {
+    background-color: #f1f1f1; /* Cambiamos el fondo de los campos solo lectura */
+}
+
+.boton-añadir-factura {
+    background-color: #00ff1e; /* Color brillante */
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 12px 25px; /* Mejoramos el padding para hacerlo más grande y fácil de hacer clic */
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 20px auto;
+}
+
+.boton-añadir-factura:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+}
+
+.boton-añadir-factura:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }

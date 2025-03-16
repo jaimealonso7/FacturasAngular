@@ -69,6 +69,7 @@ export class FacturaComponent implements OnInit {
     this.facturasService.getFacturas().subscribe(facturas => {
       this.facturas = facturas.map(factura => ({
         ...factura,
+        id: factura.id || '',
         imagen: factura.imagen ? factura.imagen : 'assets/img/Factura.jpg' // Imagen por defecto si no tiene una
       }));
       console.log('Facturas cargadas con imágenes:', this.facturas);
@@ -78,19 +79,26 @@ export class FacturaComponent implements OnInit {
   }
 
   eliminarFactura(factura: Factura) {
+    if (!factura || !factura.id) {
+      console.error('Error: Factura inválida o sin ID', factura);
+      return;
+    }
+
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '350px',
       data: { message: '¿Seguro que quieres eliminar la factura?' },
     });
-
+  
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // Eliminar la factura del arreglo de facturas
-        const index = this.facturas.findIndex(f => f.numeroFactura === factura.numeroFactura);
-        if (index !== -1) {
-          this.facturas.splice(index, 1); // Elimina la factura del arreglo
-          console.log('Factura eliminada:', factura);
-        }
+        // Llamar al servicio para eliminar la factura de la base de datos
+        this.facturasService.deleteFactura(factura.id!).then(() => {
+          // Si la eliminación en la base de datos es exitosa, eliminarla del arreglo local
+          this.facturas = this.facturas.filter(f => f.id !== factura.id);
+          console.log('Factura eliminada de la base de datos y del arreglo local:', factura);
+        }).catch(error => {
+          console.error('Error al eliminar la factura de la base de datos:', error);
+        });
       } else {
         console.log('Eliminación cancelada');
       }
@@ -110,6 +118,13 @@ export class FacturaComponent implements OnInit {
         if (index !== -1) {
           this.facturas[index] = result; // Actualiza la factura editada
         }
+
+        // Actualiza la factura en firebase
+        this.facturasService.updateFactura(result).then(() => {
+          console.log('Factura actualizada corectamente en firebase');
+        }).catch(error => {
+          console.error('Error al actualizar la factura en Firebase:', error);
+        })
       }
     });
   }

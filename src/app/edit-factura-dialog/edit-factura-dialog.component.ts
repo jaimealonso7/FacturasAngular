@@ -11,6 +11,19 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./edit-factura-dialog.component.css']
 })
 export class EditFacturaDialogComponent {
+
+  calcularTotal() {
+    const baseImponible = this.factura.baseImponible;
+    const iva = this.factura.iva;
+  
+    // Validar que la base imponible y el IVA sean números y mayores que cero
+    if (baseImponible > 0 && iva >= 0) {
+      this.factura.total = baseImponible + (baseImponible * iva / 100);
+    } else {
+      this.factura.total = 0;
+    }
+  }
+
   constructor(
     public dialogRef: MatDialogRef<EditFacturaDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public factura: any
